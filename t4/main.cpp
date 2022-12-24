@@ -20,10 +20,10 @@ void output_number(unsigned short number) {
 
 
 
-unsigned short input_number(unsigned short number) {				//numbers 0-63. 6 bits. 2^6=64
+unsigned short input_number(unsigned short number1,unsigned short number2) {				//numbers 0-63. 6 bits. 2^6=64
 	unsigned short box = 0b0000000000000000;
-	box = box | number;
-	box = box | (number << 6);
+	box = box | number1;
+	box = box | (number2 << 6);
 	std::cout << "number in bytes ";
 	for (int i = 15; i >= 0; --i)
 		std::cout << ((box >> i) & 0b0000000000000001);
@@ -33,14 +33,12 @@ unsigned short input_number(unsigned short number) {				//numbers 0-63. 6 bits. 
 
 int main()
 {
-	unsigned short a;
+	unsigned short a,b;
 	std::cin >> a;
+	std::cin >> b;
 	std::cout << std::endl;
-	input_number(a);
+	input_number(a,b);
 	std::cout << std::endl;
-	output_number(input_number(a));
-
-
-
+	output_number(input_number(a,b));
 	return 0;
 }
